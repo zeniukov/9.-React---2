@@ -12,6 +12,7 @@ export const CreateTaskForm = () => {
 		event.preventDefault();
 		if (textValue.trim() === '') return;
 		dispatch(CREATE_TODO(textValue));
+		setTextValue('');
 	};
 
 	const onSetTodoText = ({ target }) => setTextValue(target.value);
