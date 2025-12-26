@@ -1,33 +1,11 @@
-import { SET_ORDER, SET_SEARCH_TEXT } from '../actions/app-actions';
 import styles from '../App.module.css';
-import { selectSearchText, selectTodos, selectIsLoading } from '../selectors';
+import { selectTodos, selectIsLoading } from '../selectors';
 import { Todo } from './Todo';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const debounce = (func, delay) => {
-	let timeout;
-	return (...args) => {
-		clearTimeout(timeout);
-		timeout = setTimeout(() => func.apply(this, args), delay);
-	};
-};
-
-export const TodosList = () => {
-	const dispatch = useDispatch();
-
+export const TodosList = ({ searchText, searchOnChange, onHandleOrder }) => {
 	const todos = useSelector(selectTodos);
-	const searchText = useSelector(selectSearchText);
 	const isLoading = useSelector(selectIsLoading);
-
-	const onHandleOrder = () => dispatch(SET_ORDER);
-
-	const searchOnChange = ({ target }) => {
-		const delayedSetSearchText = debounce(
-			(newValue) => dispatch(SET_SEARCH_TEXT(newValue)),
-			500,
-		);
-		delayedSetSearchText(target.value);
-	};
 
 	return (
 		<div className={styles.todosContainer}>

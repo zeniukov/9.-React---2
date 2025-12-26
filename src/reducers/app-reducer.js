@@ -4,8 +4,6 @@ const initialState = {
 	openedDeleteModule: false,
 	id: '',
 	title: '',
-	searchText: '',
-	order: '',
 };
 
 export const appReducer = (state = initialState, { type, payload }) => {
@@ -28,30 +26,6 @@ export const appReducer = (state = initialState, { type, payload }) => {
 				...state,
 				id: '',
 				openedDeleteModule: false,
-			};
-		}
-		case 'SET_TEXT_VALUE': {
-			return {
-				...state,
-				textValue: payload,
-			};
-		}
-		case 'RESET_TEXT_VALUE': {
-			return {
-				...state,
-				textValue: '',
-			};
-		}
-		case 'SET_SEARCH_TEXT': {
-			return {
-				...state,
-				searchText: payload,
-			};
-		}
-		case 'SET_ORDER': {
-			return {
-				...state,
-				order: state.order === '' ? 'asc' : '',
 			};
 		}
 		case 'START_DELETING': {

@@ -1,22 +1,20 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from '../App.module.css';
-import { RESET_TEXT_VALUE, SET_TEXT_VALUE } from '../actions/app-actions';
 import { CREATE_TODO } from '../actions/todos-actions';
-import { selectTextValue } from '../selectors/';
+import { useState } from 'react';
 
 export const CreateTaskForm = () => {
-	const dispatch = useDispatch();
+	const [textValue, setTextValue] = useState('');
 
-	const textValue = useSelector(selectTextValue);
+	const dispatch = useDispatch();
 
 	const onSubmit = (event) => {
 		event.preventDefault();
 		if (textValue.trim() === '') return;
 		dispatch(CREATE_TODO(textValue));
-		dispatch(RESET_TEXT_VALUE);
 	};
 
-	const onSetTodoText = ({ target }) => dispatch(SET_TEXT_VALUE(target.value));
+	const onSetTodoText = ({ target }) => setTextValue(target.value);
 
 	return (
 		<form>
