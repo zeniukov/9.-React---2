@@ -1,6 +1,4 @@
 const initialState = {
-	isLoading: false,
-	error: null,
 	textValue: '',
 	openedUpdateModule: false,
 	openedDeleteModule: false,
@@ -12,36 +10,15 @@ const initialState = {
 
 export const appReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case 'SET_ERROR': {
-			return {
-				...state,
-				error: payload,
-				isLoading: false,
-			};
-		}
-		case 'START_LOADING': {
-			return {
-				...state,
-				isLoading: true,
-			};
-		}
-		case 'FETCH_DATA': {
-			return {
-				...state,
-				isLoading: false,
-			};
-		}
 		case 'CREATE_TODO': {
 			return {
 				...state,
-				isLoading: false,
 				id: '',
 			};
 		}
 		case 'UPDATE_TODO': {
 			return {
 				...state,
-				isLoading: false,
 				id: '',
 				openedUpdateModule: false,
 			};
@@ -49,7 +26,6 @@ export const appReducer = (state = initialState, { type, payload }) => {
 		case 'DELETE_TODO': {
 			return {
 				...state,
-				isLoading: false,
 				id: '',
 				openedDeleteModule: false,
 			};

@@ -14,7 +14,7 @@ export const DELETE_TODO = (id) => {
 				payload: id,
 			});
 		} catch (error) {
-			SET_ERROR(error);
+			dispatch(SET_ERROR(error));
 		}
 	};
 };

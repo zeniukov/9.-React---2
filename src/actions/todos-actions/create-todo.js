@@ -19,7 +19,7 @@ export const CREATE_TODO = (textValue) => {
 				payload: newTodo,
 			});
 		} catch (error) {
-			SET_ERROR(error);
+			dispatch(SET_ERROR(error));
 		}
 	};
 };

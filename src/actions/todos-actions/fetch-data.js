@@ -22,7 +22,7 @@ export const FETCH_DATA = (order, searchText) => {
 				payload: dataFromServer,
 			});
 		} catch (error) {
-			SET_ERROR(error);
+			dispatch(SET_ERROR(error));
 		}
 	};
 };
